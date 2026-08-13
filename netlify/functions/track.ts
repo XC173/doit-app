@@ -145,7 +145,7 @@ async function getStoreInternal() {
           await store.setJSON(key, value);
           return value;
         }
-        return await store.getJSON(key);
+        return await store.get(key, { type: 'json' });
       },
       type: 'netlify-blobs',
       error: null as string | null,

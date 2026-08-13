@@ -121,7 +121,7 @@ async function getStoreInternal() {
         if (value !== undefined) {
           await store.setJSON(key, value);
         }
-        return await store.getJSON(key);
+        return await store.get(key, { type: 'json' });
       },
       type: 'netlify-blobs',
     };
