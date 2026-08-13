@@ -78,13 +78,9 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
     const { getStore, type } = getStoreInternal();
 
     if (getStore) {
-      const existingRaw = await getStore(statsKey);
-      if (existingRaw) {
-        try {
-          stats = { ...getDefaultStats(), ...JSON.parse(existingRaw) };
-        } catch {
-          // 解析失败则使用默认值
-        }
+      const existing = await getStore(statsKey);
+      if (existing && typeof existing === 'object') {
+        stats = { ...getDefaultStats(), ...existing };
       }
     }
 
@@ -112,7 +108,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
     // 保存统计数据
     if (getStore) {
-      await getStore(statsKey, JSON.stringify(stats));
+      await getStore(statsKey, stats);
     }
 
     return {
@@ -135,22 +131,22 @@ function getStoreInternal() {
   try {
     // 动态导入避免本地开发时报错
     const storeModule = require('@netlify/blobs');
+    const store = storeModule.getStore('doit-tracking');
     return {
-      getStore: async (key: string, value?: string) => {
-        const store = storeModule.getStore('doit-tracking');
+      getStore: async (key: string, value?: any) => {
         if (value !== undefined) {
           await store.setJSON(key, value);
           return value;
         }
-        return await store.get(key);
+        return await store.getJSON(key);
       },
       type: 'netlify-blobs',
     };
   } catch {
     // 本地开发或未安装 @netlify/blobs 时降级为内存存储
-    const memStore: Record<string, string> = {};
+    const memStore: Record<string, any> = {};
     return {
-      getStore: async (key: string, value?: string) => {
+      getStore: async (key: string, value?: any) => {
         if (value !== undefined) {
           memStore[key] = value;
         }

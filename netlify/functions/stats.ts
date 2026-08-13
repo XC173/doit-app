@@ -45,8 +45,8 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
       const { getStore } = getStoreInternal();
       if (getStore) {
         const raw = await getStore(statsKey);
-        if (raw) {
-          stats = { ...getDefaultStats(), ...JSON.parse(raw) };
+        if (raw && typeof raw === 'object') {
+          stats = { ...getDefaultStats(), ...raw };
         }
       }
     } catch {
@@ -108,20 +108,20 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 function getStoreInternal() {
   try {
     const storeModule = require('@netlify/blobs');
+    const store = storeModule.getStore('doit-tracking');
     return {
-      getStore: async (key: string, value?: string) => {
-        const store = storeModule.getStore('doit-tracking');
+      getStore: async (key: string, value?: any) => {
         if (value !== undefined) {
           await store.setJSON(key, value);
         }
-        return await store.get(key);
+        return await store.getJSON(key);
       },
       type: 'netlify-blobs',
     };
   } catch {
-    const memStore: Record<string, string> = {};
+    const memStore: Record<string, any> = {};
     return {
-      getStore: async (key: string, value?: string) => {
+      getStore: async (key: string, value?: any) => {
         if (value !== undefined) memStore[key] = value;
         return memStore[key] || null;
       },
