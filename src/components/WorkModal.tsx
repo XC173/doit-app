@@ -173,7 +173,7 @@ export function WorkModal() {
 
   return (
     <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-lg transition-colors z-10"
