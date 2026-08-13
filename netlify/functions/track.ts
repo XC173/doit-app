@@ -75,7 +75,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
     // Netlify Blobs 存储（如果可用）
     // 这里使用环境变量存储的 JSON 作为简单方案
     // 实际部署时可通过 Netlify Blobs API 持久化
-    const { getStore, type } = getStoreInternal();
+    const { getStore, type } = await getStoreInternal();
 
     if (getStore) {
       const existing = await getStore(statsKey);
@@ -127,10 +127,10 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
 // Netlify Blobs 存储辅助函数
 // 部署后自动使用 Netlify 的 KV 存储
-function getStoreInternal() {
+async function getStoreInternal() {
   try {
-    // 动态导入避免本地开发时报错
-    const storeModule = require('@netlify/blobs');
+    // 动态 import 兼容 ESM 环境（项目 type:module 下 require 不可用）
+    const storeModule = await import('@netlify/blobs');
     const store = storeModule.getStore('doit-tracking');
     return {
       getStore: async (key: string, value?: any) => {

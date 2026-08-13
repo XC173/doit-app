@@ -42,7 +42,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
 
     // 尝试从 Netlify Blobs 读取
     try {
-      const { getStore } = getStoreInternal();
+      const { getStore } = await getStoreInternal();
       if (getStore) {
         const raw = await getStore(statsKey);
         if (raw && typeof raw === 'object') {
@@ -105,9 +105,10 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
   }
 };
 
-function getStoreInternal() {
+async function getStoreInternal() {
   try {
-    const storeModule = require('@netlify/blobs');
+    // 动态 import 兼容 ESM 环境
+    const storeModule = await import('@netlify/blobs');
     const store = storeModule.getStore('doit-tracking');
     return {
       getStore: async (key: string, value?: any) => {
