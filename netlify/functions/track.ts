@@ -75,7 +75,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
     // Netlify Blobs 存储（如果可用）
     // 这里使用环境变量存储的 JSON 作为简单方案
     // 实际部署时可通过 Netlify Blobs API 持久化
-    const { getStore, type, error: storeError } = await getStoreInternal();
+    const { getStore } = await getStoreInternal();
 
     if (getStore) {
       const existing = await getStore(statsKey);
@@ -114,7 +114,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ success: true, event: payload.event, storageType: type, storageError: storeError }),
+      body: JSON.stringify({ success: true, event: payload.event }),
     };
   } catch (err) {
     return {
@@ -148,9 +148,8 @@ async function getStoreInternal() {
         return await store.get(key, { type: 'json' });
       },
       type: 'netlify-blobs',
-      error: null as string | null,
     };
-  } catch (e) {
+  } catch {
     // 本地开发或未安装 @netlify/blobs 时降级为内存存储
     const memStore: Record<string, any> = {};
     return {
@@ -161,7 +160,6 @@ async function getStoreInternal() {
         return memStore[key] || null;
       },
       type: 'memory',
-      error: String(e),
     };
   }
 }
