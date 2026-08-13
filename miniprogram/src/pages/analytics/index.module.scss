@@ -1,0 +1,524 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(100rpx + env(safe-area-inset-bottom));
+}
+
+.header {
+  margin-bottom: $spacing-lg;
+}
+
+.headerTitle {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.headerSubtitle {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+}
+
+.rangeToggle {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-xs;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.rangeBtn {
+  flex: 1;
+  height: $button-height-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.rangeBtnActive {
+  background: $gradient-primary;
+  box-shadow: $shadow-card;
+}
+
+.rangeBtnText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.rangeBtnTextActive {
+  font-size: $font-size-md;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+.contentScroll {
+  height: calc(100vh - 320rpx - env(safe-area-inset-bottom));
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.statCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.statIconPrimary {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statIconSuccess {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  background: rgba(16, 185, 129, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statIconWarning {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  background: rgba(245, 158, 11, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statIconInfo {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  background: rgba(59, 130, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statEmoji {
+  font-size: 40rpx;
+}
+
+.statInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+}
+
+.statValueSmall {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: block;
+}
+
+.bigNumberCard {
+  text-align: center;
+  padding: $spacing-xl 0;
+}
+
+.bigNumber {
+  font-size: 120rpx;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.bigNumberLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: block;
+}
+
+.statusDistribution {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.statusItem {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.statusBar {
+  height: 24rpx;
+  background: $color-bg-page;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.statusBarFill {
+  height: 100%;
+  border-radius: $radius-sm;
+  transition: width $transition-base;
+}
+
+.statusInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statusLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.statusCount {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.entryList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.entryItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.entryIcon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-round;
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.entryIconText {
+  font-size: $font-size-md;
+}
+
+.entryInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.entryTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: block;
+  @include text-ellipsis;
+}
+
+.entryTime {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-top: $spacing-xs;
+}
+
+.entryDuration {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-xl * 2 0;
+}
+
+.emptyIcon {
+  font-size: 80rpx;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.emptyHint {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: block;
+}
+
+.trendChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 200rpx;
+  padding: $spacing-md 0;
+}
+
+.trendBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.trendBarFill {
+  width: 40rpx;
+  background: $gradient-primary;
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: $spacing-xs;
+  transition: height $transition-base;
+  min-height: 20rpx;
+}
+
+.trendBarValue {
+  font-size: $font-size-xs;
+  color: #fff;
+  font-weight: $font-weight-bold;
+}
+
+.trendBarLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.activityItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.activityColor {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+}
+
+.activityLabel {
+  flex: 1;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.activityDuration {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.compareCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  text-align: center;
+  box-shadow: $shadow-card;
+}
+
+.compareIconPrimary {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  background: rgba(59, 130, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $spacing-sm;
+}
+
+.compareIconSuccess {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  background: rgba(16, 185, 129, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $spacing-sm;
+}
+
+.compareIconDanger {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-md;
+  background: rgba(239, 68, 68, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $spacing-sm;
+}
+
+.compareEmoji {
+  font-size: 36rpx;
+}
+
+.compareLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.compareValuePrimary {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: #3B82F6;
+  display: block;
+}
+
+.compareValueSuccess {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-success;
+  display: block;
+}
+
+.compareValueDanger {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-error;
+  display: block;
+}
+
+.compareBarChart {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.compareBar {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.compareBarLabel {
+  width: 80rpx;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  flex-shrink: 0;
+}
+
+.compareBarTrack {
+  flex: 1;
+  height: 32rpx;
+  background: $color-bg-page;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.compareBarFill {
+  height: 100%;
+  border-radius: $radius-sm;
+  transition: width $transition-base;
+}
+
+.compareBarValue {
+  width: 120rpx;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  text-align: right;
+  flex-shrink: 0;
+}

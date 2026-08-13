@@ -1,0 +1,5 @@
+export default definePageConfig({
+  navigationBarTitleText: '任务详情',
+  navigationBarBackgroundColor: '#FFFFFF',
+  navigationBarTextStyle: 'black'
+});

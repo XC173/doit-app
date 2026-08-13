@@ -1,0 +1,528 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Phase 1: Confirm
+.confirmCard {
+  width: 100%;
+  max-width: $max-content-width;
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  box-shadow: $shadow-card;
+  margin-top: $spacing-xl * 2;
+  text-align: center;
+}
+
+.confirmIcon {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto $spacing-lg;
+  border-radius: $radius-round;
+  background: $gradient-warm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmIconText {
+  font-size: 56rpx;
+}
+
+.confirmTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.confirmWarningCard {
+  background: rgba(245, 158, 11, 0.1);
+  border: 2rpx solid rgba(245, 158, 11, 0.3);
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.confirmWarningText {
+  font-size: $font-size-md;
+  color: $color-warning;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+.confirmWarningSubtext {
+  font-size: $font-size-sm;
+  color: $color-warning;
+  opacity: 0.8;
+  margin-top: $spacing-xs;
+  display: block;
+}
+
+.confirmDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  display: block;
+  margin-bottom: $spacing-lg;
+}
+
+.confirmButtons {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.confirmBtnCancel {
+  flex: 1;
+  height: $button-height-md;
+  background: $color-bg-hover;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.97);
+  }
+}
+
+.confirmBtnCancelText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.confirmBtnConfirm {
+  flex: 1;
+  height: $button-height-md;
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-card;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.97);
+  }
+}
+
+.confirmBtnConfirmText {
+  font-size: $font-size-md;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+// Phase 2: Countdown
+.countdownContainer {
+  width: 100%;
+  max-width: $max-content-width;
+  margin-top: $spacing-xl * 2;
+  text-align: center;
+}
+
+.countdownLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.countdownTimer {
+  font-size: 160rpx;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1.1;
+  margin-bottom: $spacing-xl;
+  font-variant-numeric: tabular-nums;
+}
+
+.quoteCard {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border: 2rpx solid rgba(99, 102, 241, 0.2);
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.quoteText {
+  font-size: $font-size-lg;
+  color: $color-text-primary;
+  line-height: $line-height-loose;
+  font-style: italic;
+  display: block;
+}
+
+.countdownHint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+}
+
+// Phase 3: Working
+.workingContainer {
+  width: 100%;
+  max-width: $max-content-width;
+  margin-top: $spacing-xl * 2;
+  text-align: center;
+}
+
+.workingLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.workingTimer {
+  font-size: 180rpx;
+  font-weight: $font-weight-bold;
+  color: $color-secondary;
+  line-height: 1.1;
+  margin-bottom: $spacing-lg;
+  font-variant-numeric: tabular-nums;
+}
+
+.workingProgress {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: $spacing-xl;
+}
+
+.workingFinishBtn {
+  width: 80%;
+  max-width: 480rpx;
+  height: $button-height-md;
+  background: $gradient-success;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-card;
+  margin: 0 auto;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.97);
+  }
+}
+
+.workingFinishBtnText {
+  font-size: $font-size-md;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+// Phase 4: Finished
+.finishedContainer {
+  width: 100%;
+  max-width: $max-content-width;
+  margin-top: $spacing-xl;
+}
+
+.finishedHeader {
+  text-align: center;
+  margin-bottom: $spacing-lg;
+}
+
+.finishedCelebration {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 auto $spacing-md;
+  border-radius: $radius-round;
+  background: $gradient-success;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finishedEmoji {
+  font-size: 64rpx;
+}
+
+.finishedTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.finishedSubtitle {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+}
+
+.durationCard {
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-lg;
+  text-align: center;
+}
+
+.durationLabel {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.durationValue {
+  font-size: 80rpx;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1.2;
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.sectionLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.activityInput {
+  width: 100%;
+  height: $button-height-sm;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: 0 $spacing-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.taskSelectorToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $button-height-sm;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: $radius-md;
+  margin-top: $spacing-sm;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.taskSelectorToggleText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.taskSelectorList {
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-sm;
+  margin-top: $spacing-sm;
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.taskSelectorItem {
+  padding: $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-xs;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.taskSelectorItemSelected {
+  background: $gradient-primary;
+}
+
+.taskSelectorItemText {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.taskSelectorItemSelected .taskSelectorItemText {
+  color: #fff;
+}
+
+.taskSelectorCheck {
+  font-size: 32rpx;
+  color: $color-primary;
+}
+
+.taskSelectorItemSelected .taskSelectorCheck {
+  color: #fff;
+}
+
+// Mark complete toggle
+.markCompleteRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md 0;
+}
+
+.markCompleteLabel {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.toggleSwitch {
+  width: 88rpx;
+  height: 48rpx;
+  border-radius: $radius-round;
+  background: $color-text-disabled;
+  position: relative;
+  transition: background $transition-fast;
+
+  &.toggleSwitchActive {
+    background: $color-primary;
+  }
+}
+
+.toggleKnob {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: $radius-round;
+  background: #fff;
+  position: absolute;
+  top: 4rpx;
+  left: 4rpx;
+  transition: transform $transition-fast;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+}
+
+.toggleSwitchActive .toggleKnob {
+  transform: translateX(40rpx);
+}
+
+.markCompleteHint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-top: $spacing-xs;
+}
+
+// Subtask list
+.subtaskList {
+  margin-top: $spacing-md;
+  border-top: 2rpx solid $color-divider;
+  padding-top: $spacing-md;
+}
+
+.subtaskTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.subtaskItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-xs;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.subtaskCheckbox {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: $radius-sm;
+  border: 3rpx solid $color-text-disabled;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+
+  &.subtaskCheckboxChecked {
+    background: $color-secondary;
+    border-color: $color-secondary;
+  }
+}
+
+.subtaskCheckboxIcon {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.subtaskTitle {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  flex: 1;
+
+  &.subtaskTitleChecked {
+    text-decoration: line-through;
+    color: $color-text-tertiary;
+  }
+}
+
+.subtaskProgress {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-top: $spacing-xs;
+}
+
+// Finished button
+.finishedBtn {
+  width: 100%;
+  height: $button-height-lg;
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-card;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.97);
+  }
+}
+
+.finishedBtnText {
+  font-size: $font-size-lg;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}

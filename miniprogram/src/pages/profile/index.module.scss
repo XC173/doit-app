@@ -1,0 +1,425 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+}
+
+.userCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-lg;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: $radius-round;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarIcon {
+  font-size: 56rpx;
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.userEmail {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+  @include text-ellipsis;
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: block;
+}
+
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.todayStats {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.todayStatIcon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-md;
+  background: rgba(16, 185, 129, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.todayStatEmoji {
+  font-size: 40rpx;
+}
+
+.todayStatInfo {
+  flex: 1;
+}
+
+.todayStatValue {
+  font-size: 40rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.todayStatLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+  display: block;
+}
+
+.weekStats {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.weekCompareRow {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.weekCompareItem {
+  flex: 1;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  text-align: center;
+}
+
+.weekCompareLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.weekCompareValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+}
+
+.weekDiffBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  margin-top: $spacing-sm;
+  align-self: flex-start;
+}
+
+.weekDiffUp {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.weekDiffDown {
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.weekDiffText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+.weekDiffTextUp {
+  color: $color-success;
+}
+
+.weekDiffTextDown {
+  color: $color-error;
+}
+
+.weekDiffArrow {
+  font-size: $font-size-sm;
+}
+
+.encourageCard {
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+}
+
+.encourageDown {
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.08) 0%, rgba(244, 63, 94, 0.08) 100%);
+  border: 2rpx solid rgba(244, 63, 94, 0.15);
+}
+
+.encourageUp {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.08) 100%);
+  border: 2rpx solid rgba(16, 185, 129, 0.15);
+}
+
+.encourageIcon {
+  font-size: 36rpx;
+  flex-shrink: 0;
+}
+
+.encourageContent {
+  flex: 1;
+}
+
+.encourageTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.encourageText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.diagnosisCard {
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.diagnosisIcon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-md;
+  background: rgba(139, 92, 246, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.diagnosisIconEmoji {
+  font-size: 40rpx;
+}
+
+.diagnosisInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.diagnosisTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.diagnosisScore {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.diagnosisLevel {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+}
+
+.levelLow {
+  background: rgba(16, 185, 129, 0.12);
+  color: $color-success;
+}
+
+.levelMild {
+  background: rgba(59, 130, 246, 0.12);
+  color: $color-info;
+}
+
+.levelModerate {
+  background: rgba(245, 158, 11, 0.12);
+  color: $color-warning;
+}
+
+.levelSevere {
+  background: rgba(239, 68, 68, 0.12);
+  color: $color-error;
+}
+
+.diagnosisArrow {
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+.diagnosisEmpty {
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  text-align: center;
+}
+
+.diagnosisEmptyText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.diagnosisEmptyBtn {
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  padding: 16rpx 32rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagnosisEmptyBtnText {
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+.settingsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.settingsItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md 0;
+  border-bottom: 2rpx solid $color-divider;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.settingsIcon {
+  font-size: 36rpx;
+  margin-right: $spacing-md;
+  flex-shrink: 0;
+}
+
+.settingsLabel {
+  flex: 1;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.settingsValue {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-right: $spacing-xs;
+}
+
+.settingsSwitch {
+  flex-shrink: 0;
+}
+
+.settingsArrow {
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+.settingsPicker {
+  flex-shrink: 0;
+}
+
+.logoutItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg 0;
+  margin-top: $spacing-md;
+  color: $color-error;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.logoutIcon {
+  font-size: 36rpx;
+  margin-right: $spacing-sm;
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-lg 0;
+}
+
+.emptyIcon {
+  font-size: 64rpx;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.emptyText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}

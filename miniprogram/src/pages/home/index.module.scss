@@ -1,0 +1,291 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+}
+
+.header {
+  margin-bottom: $spacing-lg;
+  padding-top: $spacing-sm;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+.date {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.statsRow {
+  display: flex;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.statCard {
+  flex: 1;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statIcon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-sm;
+}
+
+.statIconPrimary { background: rgba(99, 102, 241, 0.12); }
+.statIconWarning { background: rgba(245, 158, 11, 0.12); }
+.statIconSuccess { background: rgba(16, 185, 129, 0.12); }
+
+.statEmoji { font-size: 40rpx; }
+
+.statValue {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.workSection {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
+  border: 2rpx solid rgba(99, 102, 241, 0.3);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.workContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.workInfo {
+  flex: 1;
+}
+
+.workTitle {
+  font-size: 34rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.workDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+}
+
+.workBtn {
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  padding: 20rpx 36rpx;
+  min-width: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workBtnText {
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+}
+
+.dataSection {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.sectionHeader {
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: 32rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.dataCard {
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+}
+
+.dataItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dataLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.dataValue {
+  font-size: 48rpx;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.taskSection {
+  margin-bottom: $spacing-md;
+}
+
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.taskTitle {
+  font-size: 32rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.addButton {
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  padding: 14rpx 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.addText {
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+.taskListScroll {
+  max-height: 600rpx;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.emptyState {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  text-align: center;
+  box-shadow: $shadow-card;
+}
+
+.emptyIcon {
+  font-size: 64rpx;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyBtn {
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  padding: 20rpx 40rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyBtnText {
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+}
+
+.viewAll {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-md 0;
+}
+
+.viewAllText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.quickActions {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+}
+
+.quickBtn {
+  flex: 1;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  box-shadow: $shadow-card;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.quickIcon {
+  font-size: 40rpx;
+}
+
+.quickLabel {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}

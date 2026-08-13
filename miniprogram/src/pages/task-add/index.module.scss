@@ -1,0 +1,382 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+}
+
+.formCard {
+  background: $color-bg-card;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.formItem {
+  margin-bottom: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.formLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.formRequired {
+  color: $color-error;
+  margin-left: $spacing-xs;
+}
+
+.formInput {
+  width: 100%;
+  height: $button-height-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: 0 $spacing-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.formTextarea {
+  width: 100%;
+  min-height: 200rpx;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.pickerRow {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.pickerItem {
+  flex: 1;
+  height: $button-height-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.importanceGroup {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.importanceOption {
+  flex: 1;
+  height: $button-height-md;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+  border: 2rpx solid transparent;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.importanceOptionActiveImportant {
+  background: rgba(239, 68, 68, 0.1);
+  color: $color-error;
+  border-color: $color-error;
+}
+
+.importanceOptionActiveNotImportant {
+  background: rgba(107, 114, 128, 0.1);
+  color: $color-text-secondary;
+  border-color: $color-text-secondary;
+}
+
+.importanceOptionInactive {
+  background: $color-bg-page;
+  color: $color-text-secondary;
+}
+
+.difficultyGroup {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.difficultyOption {
+  flex: 1;
+  height: $button-height-sm;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.difficultyOptionActive {
+  background: $gradient-primary;
+  color: #fff;
+  box-shadow: $shadow-card;
+}
+
+.difficultyOptionInactive {
+  background: $color-bg-page;
+  color: $color-text-secondary;
+}
+
+.datePickerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $button-height-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: 0 $spacing-md;
+}
+
+.datePickerText {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.datePickerPlaceholder {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}
+
+.datePickerIcon {
+  font-size: $font-size-lg;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm 0;
+}
+
+.checkboxBox {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: $radius-sm;
+  border: 3rpx solid $color-text-disabled;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+
+  &.checkboxChecked {
+    background: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.checkboxIcon {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.checkboxLabel {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.checkboxHint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+  display: block;
+}
+
+.footerBtn {
+  position: fixed;
+  left: $page-padding;
+  right: $page-padding;
+  bottom: calc(40rpx + env(safe-area-inset-bottom));
+  height: $button-height-lg;
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-card;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.footerBtnText {
+  font-size: $font-size-lg;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+.footerBtnDisabled {
+  background: $color-text-disabled;
+  box-shadow: none;
+}
+
+// Subtask Split Section
+.subtaskSplitSection {
+  margin-top: $spacing-md;
+}
+
+.splitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  height: $button-height-md;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
+  border: 2rpx solid rgba(139, 92, 246, 0.3);
+  border-radius: $radius-md;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.splitBtnIcon {
+  font-size: 32rpx;
+}
+
+.splitBtnText {
+  font-size: $font-size-md;
+  color: #7C3AED;
+  font-weight: $font-weight-medium;
+}
+
+.splitHint {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+  margin-top: $spacing-sm;
+  text-align: center;
+}
+
+// Subtask List
+.subtaskCount {
+  color: $color-text-tertiary;
+  font-weight: $font-weight-normal;
+}
+
+.subtaskList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+}
+
+.subtaskItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.subtaskNumber {
+  width: 40rpx;
+  height: 40rpx;
+  background: $gradient-primary;
+  border-radius: $radius-round;
+  color: #fff;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.subtaskTitle {
+  flex: 1;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.subtaskRemove {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-round;
+  background: rgba(239, 68, 68, 0.1);
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.subtaskRemoveIcon {
+  font-size: $font-size-lg;
+  color: $color-error;
+}
+
+.addSubtaskRow {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+}
+
+.addSubtaskInput {
+  flex: 1;
+  height: $button-height-sm;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: 0 $spacing-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.addSubtaskBtn {
+  width: $button-height-sm;
+  height: $button-height-sm;
+  background: $gradient-primary;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.addSubtaskBtnText {
+  font-size: $font-size-lg;
+  color: #fff;
+  font-weight: $font-weight-bold;
+}

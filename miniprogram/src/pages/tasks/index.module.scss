@@ -1,0 +1,403 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-lg;
+  padding-top: $spacing-sm;
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.headerActions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.actionBtn {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.95);
+  }
+}
+
+.actionIcon {
+  font-size: 36rpx;
+}
+
+.quadrantSection {
+  margin-bottom: $spacing-lg;
+}
+
+.sectionTitle {
+  font-size: 32rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: block;
+}
+
+.quadrantGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.quadrantCard {
+  width: calc(50% - #{$spacing-sm} / 2);
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+}
+
+.quadrantUrgentImportant {
+  background: linear-gradient(135deg, #EF4444 0%, #F97316 100%);
+}
+
+.quadrantImportantNotUrgent {
+  background: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
+}
+
+.quadrantUrgentNotImportant {
+  background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+}
+
+.quadrantNotUrgentNotImportant {
+  background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 100%);
+}
+
+.quadrantLongTerm {
+  width: 100%;
+  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+}
+
+.quadrantTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-xs;
+}
+
+.quadrantLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: #fff;
+}
+
+.quadrantCount {
+  font-size: 36rpx;
+  font-weight: $font-weight-bold;
+  color: #fff;
+}
+
+.quadrantSubtitle {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.filterBar {
+  display: flex;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.searchBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: $color-bg-card;
+  border-radius: $radius-button;
+  padding: 0 $spacing-md;
+  height: 72rpx;
+  box-shadow: $shadow-card;
+}
+
+.searchIcon {
+  font-size: 28rpx;
+  margin-right: $spacing-xs;
+}
+
+.searchInput {
+  flex: 1;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  height: 72rpx;
+}
+
+.filterTabs {
+  display: flex;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+}
+
+.filterTab {
+  flex: 1;
+  height: 64rpx;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.filterTabActive {
+  background: $gradient-primary;
+}
+
+.filterTabText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.filterTabTextActive {
+  color: $color-text-white;
+}
+
+.filterTags {
+  display: flex;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.filterTag {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: 8rpx 24rpx;
+  border-radius: $radius-round;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+}
+
+.filterTagDot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: $radius-round;
+}
+
+.filterTagText {
+  font-size: $font-size-xs;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.filterClear {
+  padding: 8rpx 24rpx;
+  border-radius: $radius-round;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.filterClearText {
+  font-size: $font-size-xs;
+  color: $color-error;
+  font-weight: $font-weight-medium;
+}
+
+.taskListSection {
+  margin-bottom: $spacing-lg;
+}
+
+.taskListScroll {
+  max-height: 800rpx;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+}
+
+.emptyState {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  text-align: center;
+  box-shadow: $shadow-card;
+}
+
+.emptyIcon {
+  font-size: 72rpx;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyBtn {
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  padding: 20rpx 40rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyBtnText {
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+}
+
+.statsSection {
+  margin-bottom: $spacing-lg;
+}
+
+.statsCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.statsTitle {
+  font-size: 32rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: block;
+}
+
+.statsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.statsItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.statsItemActive {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.statsItemDefault {
+  background: $color-bg-page;
+}
+
+.statsItemLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.statsItemValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.statsItemValueWarning { color: $color-warning; }
+.statsItemValueInfo { color: $color-info; }
+.statsItemValueSuccess { color: $color-success; }
+
+.quickStats {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.quickStat {
+  flex: 1;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  text-align: center;
+}
+
+.quickStatValue {
+  font-size: 40rpx;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  display: block;
+}
+
+.quickStatLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+}
+
+.addFab {
+  position: fixed;
+  right: $spacing-lg;
+  bottom: calc(180rpx + env(safe-area-inset-bottom));
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: $radius-round;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 32rpx rgba(99, 102, 241, 0.4);
+
+  &:active {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+}
+
+.addFabIcon {
+  font-size: 48rpx;
+  color: #fff;
+  font-weight: $font-weight-bold;
+}

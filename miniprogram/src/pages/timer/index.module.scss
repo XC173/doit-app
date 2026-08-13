@@ -1,0 +1,562 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+  padding-top: $spacing-sm;
+}
+
+.headerTitle {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.headerSubtitle {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-top: $spacing-xs;
+  display: block;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  box-shadow: $shadow-card;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.97);
+  }
+}
+
+.addBtnIcon {
+  font-size: $font-size-lg;
+  color: #fff;
+  font-weight: $font-weight-bold;
+}
+
+.addBtnText {
+  font-size: $font-size-sm;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+// Range Toggle
+.rangeToggle {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-xs;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.rangeBtn {
+  flex: 1;
+  height: $button-height-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.rangeBtnActive {
+  background: $gradient-primary;
+  box-shadow: $shadow-card;
+}
+
+.rangeBtnText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.rangeBtnTextActive {
+  font-size: $font-size-md;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+// Week Comparison Card
+.weekCompareCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.weekCompareTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-md;
+  text-align: center;
+}
+
+.weekCompareRow {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.weekCompareItem {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.weekCompareLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.weekCompareValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.weekDiffRow {
+  display: flex;
+  justify-content: center;
+}
+
+.weekDiffBadge {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-round;
+}
+
+.weekDiffUp {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.weekDiffDown {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.weekDiffArrow {
+  font-size: $font-size-sm;
+}
+
+.weekDiffUp .weekDiffArrow {
+  color: $color-success;
+}
+
+.weekDiffDown .weekDiffArrow {
+  color: $color-error;
+}
+
+.weekDiffText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+}
+
+.weekDiffUp .weekDiffText {
+  color: $color-success;
+}
+
+.weekDiffDown .weekDiffText {
+  color: $color-error;
+}
+
+.encourageCard {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+  padding: $spacing-md;
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: $radius-md;
+  border: 2rpx solid rgba(99, 102, 241, 0.1);
+}
+
+.encourageIcon {
+  font-size: 40rpx;
+  flex-shrink: 0;
+}
+
+.encourageText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.statsRow {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.statCard {
+  flex: 1;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.statIcon {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statIconPrimary {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.statIconSecondary {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.statEmoji {
+  font-size: 40rpx;
+}
+
+.statInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+}
+
+.timelineCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-lg;
+}
+
+.timelineTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  display: block;
+}
+
+.timeLabels {
+  display: flex;
+  margin-bottom: $spacing-sm;
+  position: relative;
+}
+
+.timeLabel {
+  flex: 1;
+  text-align: center;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.timelineContainer {
+  position: relative;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  overflow: hidden;
+  height: 120rpx;
+}
+
+.hourGrid {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hourCell {
+  flex: 1;
+  border-right: 1rpx solid $color-divider;
+  height: 100%;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.workTimeIndicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: rgba(99, 102, 241, 0.08);
+  border-left: 2rpx solid rgba(99, 102, 241, 0.3);
+  border-right: 2rpx solid rgba(99, 102, 241, 0.3);
+}
+
+.entryBlock {
+  position: absolute;
+  height: 48rpx;
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: center;
+  padding: 0 $spacing-xs;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scaleY(1.05);
+    opacity: 0.9;
+  }
+}
+
+.entryBlockText {
+  font-size: $font-size-xs;
+  color: #fff;
+  font-weight: $font-weight-medium;
+  @include text-ellipsis;
+  white-space: nowrap;
+}
+
+.timelineLegend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-lg;
+  margin-top: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.legendDot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: $radius-xs;
+}
+
+.legendWorkTime {
+  background: rgba(99, 102, 241, 0.15);
+  border: 2rpx solid rgba(99, 102, 241, 0.3);
+}
+
+.legendLabel {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.legendColors {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.colorDot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: $radius-xs;
+}
+
+.entriesSection {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.entriesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.entriesTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.entriesCount {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.entriesList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.entryItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.85;
+    background: $color-bg-hover;
+  }
+}
+
+.entryIcon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.entryIconText {
+  font-size: $font-size-md;
+  color: #fff;
+  font-weight: $font-weight-bold;
+}
+
+.entryInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.entryTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  display: block;
+}
+
+.entryTime {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  margin-top: 4rpx;
+  display: block;
+}
+
+.entryDuration {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.emptyState {
+  padding: $spacing-xl * 2;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 80rpx;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.emptyDesc {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: $spacing-lg;
+}
+
+.emptyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-xl;
+  background: $gradient-primary;
+  border-radius: $radius-button;
+  box-shadow: $shadow-card;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.97);
+  }
+}
+
+.emptyBtnText {
+  font-size: $font-size-md;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+.fabBtn {
+  position: fixed;
+  right: $spacing-lg;
+  bottom: calc(180rpx + env(safe-area-inset-bottom));
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: $radius-round;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-float;
+  z-index: 100;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.95);
+  }
+}
+
+.fabBtnIcon {
+  font-size: 56rpx;
+  color: #fff;
+  font-weight: $font-weight-bold;
+}

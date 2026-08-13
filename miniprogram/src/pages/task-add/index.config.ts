@@ -1,0 +1,5 @@
+export default definePageConfig({
+  navigationBarTitleText: '新建任务',
+  navigationBarBackgroundColor: '#FFFFFF',
+  navigationBarTextStyle: 'black'
+});

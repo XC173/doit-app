@@ -1,0 +1,358 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-gradient;
+  padding: $page-padding;
+  padding-bottom: calc(200rpx + env(safe-area-inset-bottom));
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+  padding-top: $spacing-sm;
+}
+
+.headerTitle {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.navBtn {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: $radius-button;
+  background: $color-bg-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-card;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.95);
+  }
+}
+
+.navIcon {
+  font-size: 28rpx;
+  color: $color-text-secondary;
+}
+
+.monthLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  min-width: 260rpx;
+  text-align: center;
+}
+
+.calendarCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-lg;
+}
+
+.weekDays {
+  display: flex;
+  margin-bottom: $spacing-sm;
+}
+
+.weekDay {
+  flex: 1;
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+  padding: $spacing-xs 0;
+
+  &.weekend {
+    color: $color-text-tertiary;
+  }
+}
+
+.calendarGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dayCell {
+  width: calc(100% / 7);
+  aspect-ratio: 1;
+  padding: 6rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-radius: $radius-sm;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+
+  &.empty {
+    pointer-events: none;
+  }
+
+  &.weekend {
+    background: rgba(107, 114, 128, 0.06);
+  }
+
+  &.holiday {
+    background: rgba(239, 68, 68, 0.06);
+  }
+
+  &.selected {
+    background: rgba(99, 102, 241, 0.12);
+  }
+}
+
+.dayTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rpx 6rpx;
+}
+
+.dayDate {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+
+  &.today {
+    color: $color-primary;
+  }
+
+  &.holiday {
+    color: $color-error;
+  }
+
+  &.weekend {
+    color: $color-text-tertiary;
+  }
+}
+
+.holidayTag {
+  font-size: 20rpx;
+  color: $color-error;
+  font-weight: $font-weight-medium;
+}
+
+.todayBadge {
+  font-size: 18rpx;
+  padding: 2rpx 10rpx;
+  background: $color-primary;
+  color: #fff;
+  border-radius: $radius-round;
+  font-weight: $font-weight-medium;
+}
+
+.dayTasks {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  overflow: hidden;
+  padding: 4rpx 6rpx;
+}
+
+.taskTag {
+  font-size: 20rpx;
+  padding: 2rpx 8rpx;
+  border-radius: $radius-xs;
+  @include text-ellipsis;
+  font-weight: $font-weight-medium;
+}
+
+.moreTasks {
+  font-size: 18rpx;
+  color: $color-text-tertiary;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.legendDot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: $radius-xs;
+  border: 2rpx solid $color-border;
+}
+
+.legendLabel {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.selectedPanel {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+}
+
+.selectedHeader {
+  padding: $spacing-md;
+  border-bottom: 1rpx solid $color-divider;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectedDateTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.selectedHolidayTag {
+  font-size: $font-size-xs;
+  color: $color-error;
+  font-weight: $font-weight-medium;
+  margin-left: $spacing-xs;
+}
+
+.selectedBody {
+  padding: $spacing-md;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: 8rpx 20rpx;
+  border-radius: $radius-button;
+  border: 2rpx solid $color-border;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.addBtnIcon {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.addBtnText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.taskItem {
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.taskInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.taskTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  display: block;
+}
+
+.taskDesc {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  margin-top: $spacing-xs;
+  @include text-ellipsis;
+  display: block;
+}
+
+.taskStartBtn {
+  width: 100rpx;
+  height: 64rpx;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+.taskStartBtnText {
+  font-size: $font-size-sm;
+  color: #fff;
+  font-weight: $font-weight-medium;
+}
+
+.emptyPanel {
+  padding: $spacing-xl;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 64rpx;
+  display: block;
+  margin-bottom: $spacing-md;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}
+
+.calendarScroll {
+  max-height: 600rpx;
+}
