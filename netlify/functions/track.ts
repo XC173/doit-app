@@ -131,7 +131,14 @@ async function getStoreInternal() {
   try {
     // 动态 import 兼容 ESM 环境（项目 type:module 下 require 不可用）
     const storeModule = await import('@netlify/blobs');
-    const store = storeModule.getStore('doit-tracking');
+    // 若 Netlify 未自动注入 Blobs 上下文（旧版 Functions 运行时），
+    // 从环境变量读取 siteID + token 手动提供
+    const siteID = process.env.NETLIFY_SITE_ID;
+    const token = process.env.NETLIFY_API_TOKEN || process.env.BLOB_TOKEN;
+    const opts = (siteID && token) ? { siteID, token } : undefined;
+    const store = opts
+      ? storeModule.getStore('doit-tracking', opts)
+      : storeModule.getStore('doit-tracking');
     return {
       getStore: async (key: string, value?: any) => {
         if (value !== undefined) {
