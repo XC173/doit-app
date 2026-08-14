@@ -20,6 +20,8 @@ function getDefaultStats() {
     visitDays: [] as string[],
     uniqueVisitors: [] as string[],
     totalEvents: 0,
+    visitorFirstDates: {} as Record<string, string>,
+    visitorVisitDays: {} as Record<string, string[]>,
   };
 }
 
@@ -64,13 +66,32 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
         ? Math.round((stats.taskCompletedCount / stats.taskTotalCount) * 100)
         : 0;
 
-    // 留存计算
-    const now = new Date();
+    // 留存计算：按访客逐个判断 —— 首访日 >= N天前 且 首访后第N天有回访
+    const today = new Date();
+    const fmt = (d: Date) => d.toISOString().split('T')[0];
+    const addDays = (d: Date, n: number) => {
+      const r = new Date(d); r.setDate(r.getDate() + n); return r;
+    };
+    // N日留存: 候选(首访日距今>=N天的访客)中, 首访后第N天那天有回访的比例
+    const calcRetention = (days: number) => {
+      const cutoff = fmt(addDays(today, -days)); // 今天往前N天
+      let candidates = 0;
+      let retained = 0;
+      const vids = Object.keys(stats.visitorFirstDates || {});
+      for (const vid of vids) {
+        const first = stats.visitorFirstDates[vid];
+        if (!first || first > cutoff) continue; // 首访不足N天，不算候选
+        candidates++;
+        const nthDay = fmt(addDays(new Date(first), days)); // 首访后第N天
+        const visits = stats.visitorVisitDays?.[vid] || [];
+        if (visits.includes(nthDay)) retained++;
+      }
+      return { candidates, retained, ratio: candidates > 0 ? retained / candidates : 0 };
+    };
+    // 判断"是否存在至少1个留存用户"给二进制用
     const checkRetention = (days: number) => {
-      const past = new Date(now);
-      past.setDate(past.getDate() - days);
-      const pastStr = past.toISOString().split('T')[0];
-      return stats.firstVisitDate && pastStr >= stats.firstVisitDate && stats.visitDays.includes(pastStr) ? 1 : 0;
+      const r = calcRetention(days);
+      return r.retained > 0;
     };
 
     const result = {
@@ -82,6 +103,8 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
       taskCompletionRate: `${taskCompletionRate}%`,
       retention3Day: checkRetention(3) ? '是' : '否',
       retention7Day: checkRetention(7) ? '是' : '否',
+      retention3DayDetail: calcRetention(3),
+      retention7DayDetail: calcRetention(7),
       // 额外信息
       firstVisitDate: stats.firstVisitDate,
       totalVisitDays: stats.visitDays.length,

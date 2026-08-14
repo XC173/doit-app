@@ -29,10 +29,15 @@ function getDefaultStats() {
     aiSubtaskTotalHardTasks: 0,
     taskCompletedCount: 0,
     taskTotalCount: 0,
+    // 保留老字段供兼容，新逻辑用 visitorFirstDates
     firstVisitDate: null as string | null,
     visitDays: [] as string[],
     uniqueVisitors: [] as string[],
     totalEvents: 0,
+    // 按访客记录首访日 { visitorId: 'YYYY-MM-DD' }
+    visitorFirstDates: {} as Record<string, string>,
+    // 按访客记录所有活跃日 { visitorId: ['YYYY-MM-DD', ...] }
+    visitorVisitDays: {} as Record<string, string[]>,
   };
 }
 
@@ -94,7 +99,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
       }
     }
 
-    // 记录访问天数
+    // 记录访问天数（全局，兼容旧逻辑）
     if (payload.event === 'app_visit' && !stats.visitDays.includes(payload.date)) {
       stats.visitDays.push(payload.date);
     }
@@ -102,6 +107,20 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
     // 记录唯一访客
     if (payload.visitorId && !stats.uniqueVisitors.includes(payload.visitorId)) {
       stats.uniqueVisitors.push(payload.visitorId);
+    }
+
+    // 按访客维度记录首访日和活跃日（用于精准留存计算）
+    if (payload.visitorId) {
+      const vid = payload.visitorId;
+      // 首访日：只记录第一次
+      if (!stats.visitorFirstDates[vid]) {
+        stats.visitorFirstDates[vid] = payload.date;
+      }
+      // 活跃日：去重追加
+      if (!stats.visitorVisitDays[vid]) stats.visitorVisitDays[vid] = [];
+      if (!stats.visitorVisitDays[vid].includes(payload.date)) {
+        stats.visitorVisitDays[vid].push(payload.date);
+      }
     }
 
     stats.totalEvents++;
