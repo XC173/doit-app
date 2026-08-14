@@ -112,8 +112,8 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
     // 按访客维度记录首访日和活跃日（用于精准留存计算）
     if (payload.visitorId) {
       const vid = payload.visitorId;
-      // 首访日：只记录第一次
-      if (!stats.visitorFirstDates[vid]) {
+      // 首访日：取最早日期（事件可能乱序到达）
+      if (!stats.visitorFirstDates[vid] || payload.date < stats.visitorFirstDates[vid]) {
         stats.visitorFirstDates[vid] = payload.date;
       }
       // 活跃日：去重追加
